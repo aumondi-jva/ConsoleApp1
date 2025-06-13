@@ -1,22 +1,14 @@
-﻿enum State { On, Off }
-class Lamp (State State)
+﻿using ConsoleApp1;
+using System;
+class Program
 {
-    public void Operate()
+    static void Main(string[] args)
     {
-        State = State == State.On ? State.Off : State.On;
-        Console.WriteLine("Luz" + (State == State.On ? "Ligada" : "Desligada"));
-    }
-}
+        IDevice lamp = new Lamp(State.Off);
 
-class Switch
-{
-    private Lamp lamp;
-    public Switch(Lamp device)
-    {
-        this.lamp = device;
-    }
-    public void Press()
-    {
-        lamp.Operate();
+        Switch lampSwitch = new Switch(lamp);
+
+        lampSwitch.Press();  
+        lampSwitch.Press(); 
     }
 }
